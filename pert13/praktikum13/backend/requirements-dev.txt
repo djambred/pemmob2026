@@ -1,0 +1,4 @@
+# Dependensi tambahan untuk pengujian (tidak dibutuhkan di produksi).
+-r requirements.txt
+pytest==9.1.1
+httpx2==2.13.1  # dipakai TestClient FastAPI

@@ -1,0 +1,15 @@
+from pydantic_settings import BaseSettings
+
+
+class Settings(BaseSettings):
+    """Konfigurasi dibaca dari environment variable (diisi docker-compose)."""
+
+    database_url: str = "mysql+pymysql://tabungku:rahasia_tabungku@localhost:3307/tabungku"
+
+    # JWT: kunci rahasia WAJIB diganti lewat .env (JWT_SECRET).
+    jwt_secret: str = "kunci-pengembangan-jangan-dipakai-di-produksi"
+    jwt_algoritma: str = "HS256"
+    access_token_menit: int = 60
+
+
+settings = Settings()

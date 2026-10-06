@@ -28,3 +28,53 @@ __pycache__/
 /pert*/tugas*/*
 !/pert*/tugas*/lib/
 !/pert*/tugas*/pubspec.yaml
+
+# Pertemuan 8–14 (TabungKu Cloud): setiap praktikumN/tugasN berisi
+# docker-compose.yml, backend/ (FastAPI), admin/ (Laravel), dan mobile/ (Flutter).
+!/pert*/praktikum*/docker-compose*.yml
+!/pert*/praktikum*/.env.example
+!/pert*/praktikum*/backend/
+!/pert*/praktikum*/admin/
+!/pert*/praktikum*/nginx/
+!/pert*/praktikum*/scripts/
+!/pert*/praktikum*/.github/
+!/pert*/praktikum*/mobile/
+!/pert*/tugas*/docker-compose*.yml
+!/pert*/tugas*/.env.example
+!/pert*/tugas*/backend/
+!/pert*/tugas*/admin/
+!/pert*/tugas*/nginx/
+!/pert*/tugas*/scripts/
+!/pert*/tugas*/.github/
+!/pert*/tugas*/mobile/
+
+# Proyek Flutter di mobile/: hanya kode, test, dan berkas izin platform.
+# Folder platform lainnya dibuat ulang dengan `flutter create .`
+/pert*/*/mobile/*
+!/pert*/*/mobile/lib/
+!/pert*/*/mobile/test/
+!/pert*/*/mobile/integration_test/
+!/pert*/*/mobile/test_driver/
+!/pert*/*/mobile/pubspec.yaml
+!/pert*/*/mobile/analysis_options.yaml
+!/pert*/*/mobile/android/
+/pert*/*/mobile/android/*
+!/pert*/*/mobile/android/app/
+/pert*/*/mobile/android/app/*
+!/pert*/*/mobile/android/app/src/
+/pert*/*/mobile/android/app/src/*
+!/pert*/*/mobile/android/app/src/main/
+/pert*/*/mobile/android/app/src/main/*
+!/pert*/*/mobile/android/app/src/main/AndroidManifest.xml
+!/pert*/*/mobile/ios/
+/pert*/*/mobile/ios/*
+!/pert*/*/mobile/ios/Runner/
+/pert*/*/mobile/ios/Runner/*
+!/pert*/*/mobile/ios/Runner/Info.plist
+
+# Hasil pengujian dan data lokal
+.pytest_cache/
+.coverage
+.env
+backups/
+*.log

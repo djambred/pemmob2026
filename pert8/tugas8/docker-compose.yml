@@ -1,0 +1,54 @@
+# TabungKu Cloud: semua layanan backend dijalankan dengan satu perintah:
+#   cp .env.example .env
+#   docker compose up -d --build
+name: tabungku
+
+services:
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: Asia/Jakarta
+    ports:
+      - "3307:3306" # 3307 di laptop agar tidak bentrok dengan MySQL/XAMPP lokal
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  api:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE}
+      TZ: Asia/Jakarta
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/app:/code/app # kode di laptop langsung dipakai container (auto-reload)
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  # Antarmuka web untuk melihat isi database: http://localhost:8081
+  # Server: mysql, user/password sesuai .env
+  adminer:
+    image: adminer:5
+    restart: unless-stopped
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:

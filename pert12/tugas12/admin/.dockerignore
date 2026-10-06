@@ -1,0 +1,10 @@
+vendor
+node_modules
+.env
+storage/logs/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+public/js/filament
+public/css/filament
+public/fonts/filament
