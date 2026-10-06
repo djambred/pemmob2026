@@ -1,0 +1,30 @@
+# OS dan editor
+.DS_Store
+.idea/
+*.iml
+
+# Python (modul-src/build_modul.py)
+__pycache__/
+*.pyc
+
+# Arsip PDF modul versi lama
+/modul-src/arsip-v1/
+
+# SDK dan installer: hanya di root repo, bukan folder "flutter" di dalam proyek
+/flutter/
+/Android/
+/commandlinetools-*.zip
+/flutter_*.tar.xz
+
+# Hasil build Flutter (cadangan; tiap proyek juga punya .gitignore sendiri)
+**/build/
+**/.dart_tool/
+**/android/local.properties
+
+# Proyek praktikum & tugas: hanya lib/ dan pubspec.yaml yang di-commit
+/pert*/praktikum*/*
+!/pert*/praktikum*/lib/
+!/pert*/praktikum*/pubspec.yaml
+/pert*/tugas*/*
+!/pert*/tugas*/lib/
+!/pert*/tugas*/pubspec.yaml
